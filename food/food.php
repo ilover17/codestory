@@ -4,25 +4,25 @@
 	if(!isset($_COOKIE['nidedaming'])){
 		$action = 'login';
 	}
-	$title ='À´¶©²Í°É£¡';
+	$title ='æ¥è®¢é¤å§ï¼';
 	$ok = false;
 	switch($action){
-		case 'login':	//µÇÂ¼/×¢Ïú
-			$title = 'µÇÂ¼';
+		case 'login':	//ç™»å½•/æ³¨é”€
+			$title = 'ç™»å½•';
 			if(!empty($_POST['nidedaming'])){
 				setcookie('nidedaming',$_POST['nidedaming']);
 				header('Location:food.php');exit();
 			}
 			break;
-		case 'index':	//¶©²ÍÁĞ±í
+		case 'index':	//è®¢é¤åˆ—è¡¨
 			$dbFile = @file_get_contents('logs/'.date('Y-m-d').'.txt');	
 			if($dbFile){
 				$dbFile = unserialize($dbFile);
 			}
 			$food = getFood();
-			$title = '¶©²ÍÁĞ±í';
+			$title = 'è®¢é¤åˆ—è¡¨';
 			break;
-		case 'del':		//È¡Ïû
+		case 'del':		//å–æ¶ˆ
 			$dbFile = @file_get_contents('logs/'.date('Y-m-d').'.txt');	
 			if($dbFile){
 				$dbFile = unserialize($dbFile);
@@ -35,9 +35,9 @@
 			file_put_contents('logs/'.date('Y-m-d').'.txt',serialize($dbFile));
 			header('Location:food.php');exit();
 			break;
-		case 'add':     //¶©²Í
+		case 'add':     //è®¢é¤
 			$data = getFood();
-			$title = '¶©²Í';
+			$title = 'è®¢é¤';
 			$list = array();
 			foreach($data as $v){
 				if($v['fisdel']==1) continue;
@@ -60,12 +60,12 @@
 			file_put_contents('logs/'.date('Y-m-d').'.txt',serialize($dbFile));
 			header('Location:food.php');exit();
 			break;		
-		case 'food':	//²Ëµ¥¹ÜÀí
-			$title = '²Ëµ¥¹ÜÀí';
+		case 'food':	//èœå•ç®¡ç†
+			$title = 'èœå•ç®¡ç†';
 			$list = getFood();
 			break;
-		case 'addfood':	//Ìí¼Ó²Ëµ¥
-			$title = 'Ìí¼Ó²Ëµ¥';
+		case 'addfood':	//æ·»åŠ èœå•
+			$title = 'æ·»åŠ èœå•';
 			if(!empty($_POST)){
 				$list = getFood();
 				$nums = count($list);
@@ -89,7 +89,7 @@
 			header('Location:food.php?act=food');exit();
 			break;	
 		default:
-			die('µØÇòºÜÎ£ÏÕ,¿ì»Ø»ğĞÇÈ¥');
+			die('åœ°çƒå¾ˆå±é™©,å¿«å›ç«æ˜Ÿå»');
 			break;
 	}
 	if(!isset($dbFile)){
@@ -128,29 +128,29 @@ a:active { color:#3B7096 }
 </style>
 <body>
 <?php
-	if($action == 'login'):	//µÇÂ¼
+	if($action == 'login'):	//ç™»å½•
 ?>
 <form action='food.php?act=login' method='post'>
-	<h3 style="text-align:center;padding-top:200px;">Í¬Ñ§,É¶Ò²²»¶àËµÁË,ÏÈÇ©¸öÃû°É£º<input type="text" name='nidedaming' class="text"> <input type="submit"  class='btn' value='Go->'></h3>
+	<h3 style="text-align:center;padding-top:200px;">åŒå­¦,å•¥ä¹Ÿä¸å¤šè¯´äº†,å…ˆç­¾ä¸ªåå§ï¼š<input type="text" name='nidedaming' class="text"> <input type="submit"  class='btn' value='Go->'></h3>
 </form>
 </body>
 </html>
 <?php exit();endif; ?>
-<h2 style="text-align:center;padding:10px;"><font color="blue"><b><?php echo $_COOKIE['nidedaming'];?></b></font>,»¶Ó­ÄãÀ´¶©²Í£¡µ±Ç°×´Ì¬:<?php if($ok){?><font color="blue">ÒÑ¶©²Í</font><?php }else{?> <font color="red">Î´¶©²Í</font><?php }?></h2>
+<h2 style="text-align:center;padding:10px;"><font color="blue"><b><?php echo $_COOKIE['nidedaming'];?></b></font>,æ¬¢è¿ä½ æ¥è®¢é¤ï¼å½“å‰çŠ¶æ€:<?php if($ok){?><font color="blue">å·²è®¢é¤</font><?php }else{?> <font color="red">æœªè®¢é¤</font><?php }?></h2>
 <div>
 <h3>
- <a href="food.php?act=index">¶©²ÍÁĞ±í</a> | 
- <a href="food.php?act=add">ÎÒÒª¶©²Í</a> |
- <a href="food.php?act=food">²Ëµ¥¹ÜÀí</a> |
- <a href="food.php?act=login">»»¸öÍ¬Ñ§</a> 
+ <a href="food.php?act=index">è®¢é¤åˆ—è¡¨</a> | 
+ <a href="food.php?act=add">æˆ‘è¦è®¢é¤</a> |
+ <a href="food.php?act=food">èœå•ç®¡ç†</a> |
+ <a href="food.php?act=login">æ¢ä¸ªåŒå­¦</a> 
 </h3>
 <hr/>
 </div>
-<?php if($action=='index'):  //Ê×Ò³?>
-<h4>ÏêÏ¸ÁĞ±í</h4>
+<?php if($action=='index'):  //é¦–é¡µ?>
+<h4>è¯¦ç»†åˆ—è¡¨</h4>
 <table width="100%" border=1>
 	<tr style="background-color:#BDC7D8">
-		<th width="20"></th><th>µê¼Ò</th><th>²ËÃû</th><th>ÓÃ»§</th><th>µ¥¼Û</th><th>¶©²ÍÊ±¼ä</th><th>²Ù×÷</th>
+		<th width="20"></th><th>åº—å®¶</th><th>èœå</th><th>ç”¨æˆ·</th><th>å•ä»·</th><th>è®¢é¤æ—¶é—´</th><th>æ“ä½œ</th>
 	</tr>
 	<?php if($dbFile):
 		$total = array();
@@ -164,22 +164,22 @@ a:active { color:#3B7096 }
 		<td><?php echo $v['shop'];?>&nbsp;</td>
 		<td><?php echo $v['fname'];?>&nbsp;</td>
 		<td><?php echo $v['uname'];?>&nbsp;</td>
-		<td><?php echo $v['fvalue'];?> &nbsp;Ôª</td>
+		<td><?php echo $v['fvalue'];?> &nbsp;å…ƒ</td>
 		<td width='200px'><?php echo date('Y-m-d H:i:s',$v['ctime']);?></td>
-		<td> <?php if($_COOKIE['nidedaming']==$v['uname']){?><span class="btn" ><a href='food.php?act=del&fid=<?php echo $v['fid'];?>'>È¡Ïû</a> </span> <?php }else{?>-<?php }?></td>
+		<td> <?php if($_COOKIE['nidedaming']==$v['uname']){?><span class="btn" ><a href='food.php?act=del&fid=<?php echo $v['fid'];?>'>å–æ¶ˆ</a> </span> <?php }else{?>-<?php }?></td>
 	</tr>
 	<?php endforeach; ?> 
 	<tr style="color:red;font-weight:bold">
-	<td colspan='4' align='right'>×Ü¼Æ:</td>
-	<td align='center'><?php echo $totalRmb;?> Ôª</td>
+	<td colspan='4' align='right'>æ€»è®¡:</td>
+	<td align='center'><?php echo $totalRmb;?> å…ƒ</td>
 	<td colspan ='2'>&nbsp;</td>
 	</tr>
 	<?php endif;?>
 </table>
 <br/>
-<h4>»ã×Ü</h4>
+<h4>æ±‡æ€»</h4>
 <table width="100%" border=1>
-	<tr style="background-color:#BDC7D8"><th width="20"></th><th>µê¼Ò</th><th>²ËÃû</th><th>ÓÃ»§</th><th>µ¥¼Û</th><th>·İÊı</th><th>×Ü¼Û</th></tr>
+	<tr style="background-color:#BDC7D8"><th width="20"></th><th>åº—å®¶</th><th>èœå</th><th>ç”¨æˆ·</th><th>å•ä»·</th><th>ä»½æ•°</th><th>æ€»ä»·</th></tr>
 	<?php $tRmb = 0;
 	if(isset($total)):foreach($total as $sp=>$sv):
 	$spRmb = 0;
@@ -189,52 +189,52 @@ a:active { color:#3B7096 }
 		<td><?php echo $sp;?></td>
 		<td><?php  echo $food[$sfid]['fname'];?></td>
 		<td><?php echo implode(',',$svv);?></td>
-		<td><?php echo $food[$sfid]['fvalue'];?> Ôª</td>
+		<td><?php echo $food[$sfid]['fvalue'];?> å…ƒ</td>
 		<td> X <?php echo count($svv);?></td>
-		<td><?php echo $food[$sfid]['fvalue']*count($svv);?> Ôª</td>
+		<td><?php echo $food[$sfid]['fvalue']*count($svv);?> å…ƒ</td>
 	</tr>
 	<?php 
 	$spRmb += $food[$sfid]['fvalue']*count($svv);
 	endforeach;
 	?>
 	<tr style="color:blue;font-weight:bold">
-		<td colspan='6' align='right' >[µê¼Ò:<?php echo $sp;?>]:
-		<td align="center"><?php echo $spRmb;?> Ôª</td>
+		<td colspan='6' align='right' >[åº—å®¶:<?php echo $sp;?>]:
+		<td align="center"><?php echo $spRmb;?> å…ƒ</td>
 	</tr>	
 	<?php 
 		$tRmb += $spRmb;
 		endforeach;
 	?>
 	<tr style="color:red;font-weight:bold">
-		<td colspan='6' align='right'>Ò»¹²×Ü¼Æ:
-		<td align="center"><?php echo $tRmb;?> Ôª</td>
+		<td colspan='6' align='right'>ä¸€å…±æ€»è®¡:
+		<td align="center"><?php echo $tRmb;?> å…ƒ</td>
 	</tr>
 	<?php endif;?>
 </table>
 <?php endif;?>
-<?php if($action=='add'): //¶©²Ë
+<?php if($action=='add'): //è®¢èœ
 	if($ok){
-		echo '<h2 align="center">ÄãÒÑ¾­¶©¹ıÁË£¡</h2>';
+		echo '<h2 align="center">ä½ å·²ç»è®¢è¿‡äº†ï¼</h2>';
 	}else{
 	?>
-<h2 align="center">### ¿ìËÙ¶©²Í¹¥ÂÔ,¿´ÖĞÄÄµÀ²Ë,Ö»Òªµã»÷Ò»ÏÂ¾Í¿ÉÒÔ... ###</h2>
+<h2 align="center">### å¿«é€Ÿè®¢é¤æ”»ç•¥,çœ‹ä¸­å“ªé“èœ,åªè¦ç‚¹å‡»ä¸€ä¸‹å°±å¯ä»¥... ###</h2>
 <?php foreach($list as $k=>$v): ?>
 <br/><br/>
- <h2>µê¼Ò:<font><?php echo $k;?></font></h2>
+ <h2>åº—å®¶:<font><?php echo $k;?></font></h2>
  <hr/>
  <div style="margin:5px 10px;padding:0px; 10px;">
  <?php foreach($v as $vv):?>
  <span style="padding:2px 10px;border:1px solid #BDC7D8;margin:10px;line-height:30px;height:30px;">
- <a href="food.php?act=doadd&fid=<?php echo $vv['fid'];?>" ><?php echo $vv['fname'],' (£¤:',$vv['fvalue'],')';?></a>
+ <a href="food.php?act=doadd&fid=<?php echo $vv['fid'];?>" ><?php echo $vv['fname'],' (ï¿¥:',$vv['fvalue'],')';?></a>
  </span>
 <?php endforeach;?>
 </div>
 <?php endforeach; } endif;?>
-<?php if($action=='food'):  //²Ëµ¥¹ÜÀí ?>
-<h4><a href="food.php?act=food">²Ëµ¥ÁĞ±í</a>  | <a href="food.php?act=addfood"> Ìí¼ÓĞÂ²Ë</a></h4>
+<?php if($action=='food'):  //èœå•ç®¡ç† ?>
+<h4><a href="food.php?act=food">èœå•åˆ—è¡¨</a>  | <a href="food.php?act=addfood"> æ·»åŠ æ–°èœ</a></h4>
 <table width="100%" border=1 >
 	<tr style="background-color:#BDC7D8">
-		<th width="20"></th><th>µê¼Ò</th><th>²ËÃû</th><th>µ¥¼Û</th><th>²Ù×÷</th>
+		<th width="20"></th><th>åº—å®¶</th><th>èœå</th><th>å•ä»·</th><th>æ“ä½œ</th>
 	</tr>
 	<?php 
 		if(!empty($list)): foreach($list as $v):
@@ -244,27 +244,27 @@ a:active { color:#3B7096 }
 		<td><?php echo $v['fid']?>&nbsp;</td>
 		<td><?php echo $v['shop']?>&nbsp;</td>
 		<td><?php echo $v['fname']?>&nbsp;</td>
-		<td><?php echo $v['fvalue']?>&nbsp;Ôª</td>
-		<td>[<a href="food.php?act=delfood&fid=<?php echo $v['fid'];?>">É¾³ı</a>]</td>
+		<td><?php echo $v['fvalue']?>&nbsp;å…ƒ</td>
+		<td>[<a href="food.php?act=delfood&fid=<?php echo $v['fid'];?>">åˆ é™¤</a>]</td>
 	</tr>	
 	<?php endforeach; endif;?>
 </table>
 <?php endif;?>
 <?php
-	if($action == 'addfood'):	//¼Ó²Ë
+	if($action == 'addfood'):	//åŠ èœ
 ?>
 <form action='food.php?act=addfood' method='post'>
 	<div id='List'>
-	<h4 id='first'>²ËÃû£º <input type="text" name='fname[]' class="text"> 
-	µê¼Ò: <input type="text" name="shop[]" class="text"> 
-	µ¥¼Û: <input type="text" name='fvalue[]' class="text"> (Êı×Ö)<input type="button" class='btn' onclick='addFood()' value='+'></h4>
+	<h4 id='first'>èœåï¼š <input type="text" name='fname[]' class="text"> 
+	åº—å®¶: <input type="text" name="shop[]" class="text"> 
+	å•ä»·: <input type="text" name='fvalue[]' class="text"> (æ•°å­—)<input type="button" class='btn' onclick='addFood()' value='+'></h4>
 	</div>
-	<input type='submit' value='±£´æ' class='btn' >
+	<input type='submit' value='ä¿å­˜' class='btn' >
 </form>
 <script>
 	function addFood(){
 		var obj = document.createElement("div");
-		obj.innerHTML = '<h4>²ËÃû£º <input type="text" name="fname[]" class="text"> µê¼Ò: <input type="text" name="shop[]" class="text"> µ¥¼Û: <input type="text" name="fvalue[]" class="text"> (Êı×Ö)</h4>';
+		obj.innerHTML = '<h4>èœåï¼š <input type="text" name="fname[]" class="text"> åº—å®¶: <input type="text" name="shop[]" class="text"> å•ä»·: <input type="text" name="fvalue[]" class="text"> (æ•°å­—)</h4>';
 		document.getElementById('List').appendChild(obj); 
 	}
 </script>
