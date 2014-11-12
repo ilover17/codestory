@@ -1,0 +1,5 @@
+/* Selectable
+----------------------------------*/
+.ui-selectable-helper { border:1px dotted black }
+li.ui-selecting { background: #cccccc; }
+li.ui-selected { background: #cccccc; color: white; }

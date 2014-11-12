@@ -1,0 +1,51 @@
+<script src='js/jquery.js'></script>
+<script>
+/* 日历相关的js函数 必须是引入jquery前台下 */
+  function prevYear(month,year){
+    $.post('calendar.php',{month:month,year:year-1},function(msg){
+      $('#calendar').html(msg);
+    });
+  }
+  function nextYear(month,year){
+    $.post('calendar.php',{month:month,year:year+1},function(msg){
+      $('#calendar').html(msg);
+    });
+  }
+  function prevMonth(month,year){
+    if(month!=1){
+      $.post('calendar.php',{year:year,month:month-1},function(msg){
+        $('#calendar').html(msg);
+      });
+    }else{
+      prevYear(12,year);
+    }
+  }
+  function nextMonth(month,year){
+    if(month!=12){
+      $.post('calendar.php',{year:year,month:month+1},function(msg){
+        $('#calendar').html(msg);
+      });
+    }else{
+      nextYear(1,year);
+    }
+  }
+  function gotoday(year,month,day){
+    alert(year+'-'+month+'-'+day);
+  }
+  $(function(){
+    $.post('calendar.php',{a:'index'},function(msg){
+      $('#calendar').html(msg);
+    });
+  });
+</script>
+<style>
+.calendar_table{font-weight:bold;font-size:14px;background:#FEE517;text-align:center;}
+.calendar_th{color:#ff9900;}
+.calendar_td_0{color:#219eef}
+.calendar_td_1,.calendar_td_2,.calendar_td_3,.calendar_td_4,.calendar_td_5{color:#333333}
+.calendar_td_6{color:#219eef}
+.calendar_td_now{color:red;border:red dashed 1px;}
+.calendar_td_else{color:#999999}
+</style>
+<div id="calendar">
+</div>

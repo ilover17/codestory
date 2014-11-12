@@ -1,0 +1,220 @@
+/* 
+    Document   : basic
+    Created on : 2010-4-15, 8:31:12
+    Author     : slime
+    Description:
+    Purpose of the stylesheet follows.
+*/
+/*布局
+******************************************************
+*/
+* {
+    margin:0;
+    padding:0;
+    color:#222222;
+    font-size: 12px;
+}
+body{
+    text-align: center;
+}
+#sl-wrap {
+    overflow:hidden;
+    width:1000px;
+    margin:0 auto;
+    text-align: left;
+}
+#sl-header{
+    float: left;
+    width:100%;
+    line-height:60px;
+    padding-left:10px;
+}
+#sl-main-nav, #mainContent, #secondaryContent,#content {
+    margin-bottom:-10000px;
+    padding-bottom:10000px;
+}
+#sl-main-nav {
+    float:left;
+    width:250px;
+}
+#sl-main-content {
+    float:left;
+    width:500px;
+}
+#sl-secondary-content {
+    float:right;
+    width:250px;
+}
+/*两列布局中，mainContent和secondary合并为content*/
+#sl-content {
+    float:left;
+    width:750px;
+}
+/*单体布局中，内容区域是一个整体或相当复杂，所以将content和mainNav合并为main*/
+#sl-main {
+    float:left;
+    width:100%;
+    background:#FF0000;
+}
+#sl-footer{
+    float: left;
+    width:100%;
+}
+/*通用细节设置
+***********************************************************
+*/
+a{
+    text-decoration:none;
+    color:#333333;
+}
+a:hover{
+    font-weight:bold;
+}
+a.external,a[href^='http:']{
+    background:url(externalLink.gif) no-repeat right top;
+    padding-right:10px;
+}
+a[href^='http://127.0.0.1'],a[href^='http://cn09.com']{
+    background:none;
+    padding-right:0;
+}
+a[href^='mailto:']{
+    background:url(email.png) no-repeat right top;
+    padding-right:12px;
+}
+a[href$='.doc']{
+    background:url(doc.gif) no-repeat right top;
+    padding-right:12px;
+}
+a[href$='.xls']{
+    background:url(excel.png) no-repeat right top;
+    padding-right:12px;
+}
+a[href$='.pdf']{
+    background:url(pdf.gif) no-repeat right top;
+    padding-right:12px;
+}
+a[href$='.rar']{
+    background:url(rar.gif) no-repeat right top;
+    padding-right:12px;
+}
+a[href$='.zip']{
+    background:url(zip.gif) no-repeat right top;
+    padding-right:12px;
+}
+
+#sl-header h1{
+    color:#ffffff;
+}
+
+#sl-footer p{
+    text-align: center;
+    font-weight:normal;
+}
+.sl-selectable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.sl-selectable li {
+    margin: 3px;
+    padding: 0.4em;
+    font-size: 1em;
+    height: 18px;
+    text-align:center;
+    cursor:pointer
+}
+p#sl-quick-action{
+    width:600px;
+}
+p#sl-quick-action a{
+    display:block;
+    float:left;
+    width:150px;
+    background:none;
+    color:black
+}
+/*表格*/
+legend{
+     font-weight:bolder;
+     padding:3px 6px;
+}
+ul.sl-table label{
+    display: block;
+    float:left;
+    width:150px;
+    margin-right: 10px;
+}
+.sl-table li{
+    border-bottom:solid 1px #cccccc;
+    line-height: 30px;
+    padding: 6px;
+    list-style-type: none;
+    height:auto;
+    overflow:auto;
+    clear: both;
+}
+.sl-table li:hover{
+    font-weight:bolder;
+}
+.sl-table li a{
+    font-size:smaller;
+}
+.sl-table li a:hover{
+    font-size:larger;
+}
+.sl-table li input,textarea,select{
+    margin-left: 6px;
+}
+/*ADDRESS表格*/
+#sl-address li{
+    padding:0;
+}
+#sl-address span{
+    padding:6px;
+    margin: 0;
+}
+#sl-address span.action{
+    display:block;
+    float:left;
+    width:30px;
+}
+#sl-address span.type{
+    display:block;
+    float:left;
+    width:100px;
+}
+#sl-address span.value{
+    display:block;
+    float:left;
+    width:150px;
+}
+#sl-address span.note{
+    display:block;
+    float:left;
+    width:150px;
+}
+
+/*jquery ui的CSS增强*/
+.ui-state-highlight p,.ui-state-error p{
+    padding:12px;
+}
+
+label.error{
+    display:block;
+    float:right;
+    color:red;
+    padding-left:20px;
+    background: url('alert.gif') center left no-repeat;
+}
+input.error{
+    display:block;
+    float:left;
+    color:red;
+}
+
+span.ui-icon{
+    float: left;
+    margin-right: .3em;
+}
