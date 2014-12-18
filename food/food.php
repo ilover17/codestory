@@ -1,5 +1,6 @@
 <?php
 	date_default_timezone_set('PRC');
+	header("Content-Type:text/html; charset=utf-8");
 	$action = isset($_GET['act']) ? $_GET['act'] : 'index';
 	if(!isset($_COOKIE['nidedaming'])){
 		$action = 'login';
