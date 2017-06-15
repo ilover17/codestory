@@ -1,0 +1,11 @@
+{
+    "name":"jason/mytest",
+    "require": {
+        "monolog/monolog": "1.0.*"
+    },
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {"jason\\": "src/"}
+    }
+}
+
