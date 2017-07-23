@@ -1,0 +1,52 @@
+<div class="pop-custom clearfix" >
+	<div class="item-inner">
+		<div class="item">
+			<div class="item-title">信息确认：</div>
+			<div class="item-content">
+				客户编号：{$info.uname}<br/>
+				放款日期：{$info.cday}<br/>
+				放款金额：{$info.money}<br/>
+				放款期数：{$info.backtimes}<br/>
+				每期还款：{$info.backfee}<br/>
+				实际放款：{$info.realyfee}<br/>
+				当前回款：{$info.curbackfee}<br/>
+			</div>
+		</div>
+		<div class="item">
+			<div class="item-title">备注说明：</div>
+			<div class="item-content">
+				<input id='notes' value='' class='s-txt' style='width:250px;'> 
+			</div>
+		</div>
+		<div class="item">
+			<div class="item-title"></div>
+			<div class="item-content">
+				确认将此次放款记录设置为坏账？<br/>
+				设置为坏账后，本次记录的未还款记录都会失效。
+			</div>
+		</div>
+		
+		<div class="item item-button">
+			<div class="item-title">&nbsp;</div>
+			<div class="item-content">
+				<a href="javascript:;" class="btn-blue" onclick="doSetBad({$info.id})"><span>确定</span></a>
+				<a href="javascript:;" class="btn-gray" onclick="ui.box.close()"><span>取消</span></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var doSetBad = function(id){
+		$.post(U('index/Index/doBad'),{ id:id,notes:$('#notes').val() },function(msg){
+			if(msg.status == 1){
+				ui.success('设置成功');
+				setTimeout(function(){
+					location.href = location.href;
+				},1500)
+			}else{
+				ui.error(msg.info);
+			}
+		},'json')
+	}
+</script>

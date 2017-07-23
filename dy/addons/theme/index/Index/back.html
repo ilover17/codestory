@@ -1,0 +1,125 @@
+<include file="../header" />
+    <div class="grid-classes">
+        <div class="pbl-title"><h4>全部回款记录</h4></div>
+        <div class="pbl-bg">
+                           
+            <div class="mod-search js-mod-search"  >
+                <form id='search' action="{:U('index/Index/back')}"> 
+                    <input type="hidden" name='app' value='index'>
+                    <input type="hidden" name='mod' value='Index'>
+                    <input type="hidden" name='act' value='back'>
+                    <div class="item-top">
+                        <span style="left:74px;"><i></i><em></em></span>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">放款序号：</div>
+                            <div class="item-content"><input type="text" class="s-txt" name='fee_id' value='{$_GET.fee_id|t}' placeholder="填写放款记录中的序号" style="width:220px;"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">回款期次：</div>
+                            <div class="item-content"><input type="text" class="s-txt" name='backnums'  value='{$_GET.backnums|t}' style="width:220px;"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">是否已回：</div>
+                            <div class="item-content item-date">
+                                <select name='is_back'>
+                                    <option value='all' <eq name='_GET.is_back' value='all'>selected="selected"</eq>>全部</option>
+                                    <option value='0' <eq name='_GET.is_back' value='0'>selected="selected"</eq>>未回款</option>
+                                    <option value='1' <eq name='_GET.is_back' value='1'>selected="selected"</eq>>已回款</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">放款日期：</div>
+                            <div class="item-content item-date">
+                                <input type="text" name="cday" class="rcalendar_input s-txt" id="cday" value="{$_GET.cday|t}" onclick="core.rcalendar(this,'Ymd');" readonly="readonly" placeholder="" style="width:85px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">应回日期：</div>
+                            <div class="item-content item-date">
+                                <input type="text" name="back_day" class="rcalendar_input s-txt" id="back_day" value="{$_GET.back_day|t}" onclick="core.rcalendar(this,'Ymd');" readonly="readonly" placeholder="" style="width:85px">
+                            </div>
+                        </div>
+                    </div>
+                     <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">实回日期：</div>
+                            <div class="item-content item-date">
+                                <input type="text" name="realy_back_day" class="rcalendar_input s-txt" id="realy_back_day" value="{$_GET.realy_back_day|t}" onclick="core.rcalendar(this,'Ymd');" readonly="readonly" placeholder="" style="width:85px">
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div style="clear:both"></div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">&nbsp;</div>
+                            <div class="item-content">
+                                <a href="javascript:;" class="btn-blue mr15" onclick=
+                                "submitCheck($('#search'))"><span>确定</span></a>
+                                <a href="javascript:;" class="btn-gray" onclick="$('.js-mod-search').slideUp()"><span>取消</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+         
+            <table class="pbl-table">
+                <tbody>
+                    <tr>
+                        <th >客户编号</th>
+                        <th >回款日期 （星期）</th>
+                        <th >回款期次</th>
+                        <th >应回金额</th>
+                        <th >实收金额</th>
+                        <th >实收日期</th>
+                        <th >放款序号</th>
+                        <th >放款日期</th>
+                        <th>说明</th>
+                        <th >操作</th>
+                    </tr>
+                    <neq name='lists.data' value=''>
+                    <volist name="lists.data" id="vo">
+                    <tr <eq name='vo.is_back' value='1'>style='background-color:green;color:#fff'</eq> 
+                    <eq name='vo.is_back' value='0'><php>if(strtotime($vo['back_day']) < time() ){</php>style='color:red'<php>}</php></eq> >
+                        <td>{$uname[$vo['fee_id']]}</td>
+                        <td>{$vo.back_day} （{$vo.week} ）</td>
+                        <td>{$vo.back_nums}</td>
+                        <td>{$vo.back_fee}</td>
+                        <td>{$vo.realy_back_fee}</td>
+                        <td>{$vo.realy_back_day}</td>
+                        <td>{$vo.fee_id}</td>
+                        <td>{$vo.cday}</td>
+                        <td>{$vo.notes}</td>
+                        <td><eq name='vo.is_back' value='0'><a href="javascript:;" onclick="setBack({$vo.id})">确认回款</a></eq></td>
+                    </tr>
+                    </volist>
+                    <else />
+                    <tr><td colspan="9" align="center">暂无相关数据</td></tr>
+                    </neq>
+                </tbody>
+            </table>
+            <div class="page" style="padding-top: 10px ">
+            {$lists.html}
+            </div>
+            <div style="padding-top: 10px ">
+            说明：所有已回款的记录都用绿色标明，到期未回款记录都用红色标明；
+            </div>
+        </div>
+    </div>
+<include file="../footer" />
+<script type="text/javascript">
+var setBack = function(id){
+    ui.box.load(U('index/Index/backBox',{ id:id}),'确认回款');
+}
+</script>

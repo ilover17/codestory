@@ -1,0 +1,99 @@
+<include file="../header" />
+    <div class="grid-classes">
+        <div class="pbl-title"><h4>放款记录</h4></div>
+        <div class="pbl-bg">
+                           
+            <div class="mod-search js-mod-search"  >
+                <form id='search' action="{:U('index/Index/doAddUser')}" method='post'> 
+                   
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">登录账号：</div>
+                            <div class="item-content"><input type="text" class="s-txt" name='login'  value='' style="width:220px;"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">用户姓名：</div>
+                            <div class="item-content"><input type="text" class="s-txt" name='uname'  value='' style="width:220px;"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">登录密码：</div>
+                            <div class="item-content"><input type="text" class="s-txt" name='password'  value='' style="width:220px;"></div>
+                        </div>
+                    </div>
+                     <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">是否管理员：</div>
+                            <div class="item-content">
+                            <select name='is_admin' style="vertical-align:middle">
+                            <option value='0' >普通账号 </option>
+                            <option value='1' >管理员账号</option>
+                            </select></div>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">&nbsp;</div>
+                            <div class="item-content">
+                                <a href="javascript:;" class="btn-blue mr15" onclick=
+                                "submitCheck($('#search'))"><span>添加新账号</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+         
+            <table class="pbl-table">
+                <tbody>
+                    <tr>
+                        <th >序号</th>
+                        <th >登录账号</th>
+                        <th >用户姓名</th>
+                        <th >是否管理员</th>
+                        <th >操作</th>
+                    </tr>
+                    <neq name='lists' value=''>
+                    <volist name="lists" id="vo">
+                    <tr>
+                       <td>{$vo.uid}</td>
+                       <td>{$vo.login}</td>
+                       <td>{$vo.uname}</td>
+                       <td><eq name='vo.is_admin' value='1'> 管理员<else />普通账号 </eq></td>
+                       <td>
+                       <a href="javascript:;" onclick="setDelUser({$vo.uid})">删除</a>
+                       </td>
+                    </td>
+                    </tr>
+                    </volist>
+                    <else />
+                    <tr><td colspan="9" align="center">暂无相关数据</td></tr>
+                    </neq>
+                </tbody>
+            </table>
+            <div style="padding-top: 10px ">
+                说明：普通账号只能访问自己管理的数据，管理员账号可以查看所有数据
+            </div>
+        </div>
+    </div>
+<include file="../footer" />
+<script type="text/javascript">
+
+var setDelUser = function(uid){
+    ui.confirmBox('删除','确定删除此用户？删除后用户将无法访问本系统',function(){
+        $.post(U('index/Index/doDelUser'),{ uid:uid },function(msg){
+            if(msg.status == 1){
+                ui.success('删除成功');
+                setTimeout(function(){
+                    location.href = location.href ; 
+                },1500)
+            }else{
+                ui.error('删除出错');
+            }
+        },'json')
+    });
+}
+</script>

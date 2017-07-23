@@ -1,0 +1,91 @@
+<include file="../header" />
+<div class="pbl-section">
+<div class="pbl-title">
+	<h4>新加放款</h4>
+</div>
+<div class="pbl-bg">
+	<div class="form-entry">
+		<form model-node='add_pay' method='post' action="{:U('index/Index/doAdd')}">
+		<div class="item-inner">
+			<div class="clearfix">
+					<ul class="item-ul">
+						<li>
+							<div class="item-subtitle"><font style="color:red">* </font>客户编号：</div>
+							<div class="item-content">
+							<input type="text" placeholder="填写客户编号" name="uname" class="s-txt s-width" value=''>
+							</div>
+						</li>
+						<li>
+							<div class="item-subtitle"><font style="color:red">* </font>放款金额：</div>
+							<div class="item-content">
+							<input type="text" placeholder="填写放款金额" name="money" class="s-txt s-width" value='' id='money' onblur="checkFee()"> 元
+							</div>
+						</li>
+						<li>
+							<div class="item-subtitle"><font style="color:red">* </font>还款期数：</div>
+							<div class="item-content">
+							<input type="text" placeholder="填写还款期数" name="backtimes" class="s-txt s-width" value='' >
+							</div>
+						</li>
+						<li>
+							<div class="item-subtitle"><font style="color:red">* </font>每期还款：</div>
+							<div class="item-content">
+							<input type="text" placeholder="填写每期还款金额" name="backfee" class="s-txt s-width" value='' id='backfee' onblur="checkFee()"> 元
+							</div>
+						</li>
+						<li>
+							<div class="item-subtitle">平台费用：</div>
+							<div class="item-content">
+							<input type="text" placeholder="填写平台收取费用" name="platfee" class="s-txt s-width" value='' id='platfee' onblur="checkFee()"> 元
+							</div>
+						</li>
+						<li>
+							<div class="item-subtitle">业务员费：</div>
+							<div class="item-content">
+							<input type="text" placeholder="填写支付给业务员的费用" name="userfee" class="s-txt s-width" value='' id='userfee' onblur="checkFee()"> 元
+							</div>
+						</li>
+						<li>
+							<div class="item-subtitle">实际放款：</div>
+							<div class="item-content">
+								<label id='realyfee_label'></label>
+								<input type='hidden' value='' name='realyfee' id='realyfee'>
+							</div>
+						</li>
+						<li>
+							<div class="item-subtitle">业务员：</div>
+							<div class="item-content">
+							<input type="text" placeholder="填写业务员姓名" name="username" class="s-txt s-width" value='{$user.uname}'>
+							</div>
+						</li>
+						
+						<li>
+							<div class="item-subtitle">放款日期：</div>
+							<div class="item-content">
+							{:wDate(array('name'=>'cday','placeholder'=>'','id'=>'cday','value'=>''))}
+							</div>
+						</li>	
+					<li>
+					</ul>
+			</div>
+			
+			<div class="item-button">
+				<div class="item-subtitle">&nbsp;</div>
+				<div class="item-content">
+					<a href="javascript:;" event-node="submit_btn" class="btn-blue mr15"><span>新加</span></a>
+					<a href="javascript:;" onclick="history.go(-1)" class="btn-gray"><span>返回</span></a>
+				</div>
+			</div>
+		</div>
+		</form>
+	</div>
+</div>
+</div>
+<include file="../footer" />
+<script type="text/javascript">
+	function checkFee(){
+		var realyfee =  parseInt($('#money').val(),10) - parseInt($('#backfee').val(),10) - parseInt($('#platfee').val(),10) + parseInt($('#userfee').val(), 10);
+		$('#realyfee_label').html(realyfee);
+		$('#realyfee').val(realyfee);
+	}
+</script>

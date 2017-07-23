@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<meta content="{$site.site_header_keywords}" name="keywords">
+<meta content="{$site.site_header_description}" name="description">
+<title>款项管理系统 </title>
+<link href="__THEME__/image/favicon.ico" rel="shortcut icon">
+<link href="__THEME__/css/global.css?v={:date('YmdHi')}" rel="stylesheet" type="text/css" />
+<link href="__THEME__/css/menu.css?v={:date('YmdHi')}" rel="stylesheet" type="text/css" />
+<link href="__THEME__/css/form.css?v={:date('YmdHi')}" rel="stylesheet" type="text/css" />
+<link href="__THEME__/css/module.css?v={:date('YmdHi')}" rel="stylesheet" type="text/css" />
+<link href="__THEME__/css/iconfont.css?v={:date('YmdHi')}" rel="stylesheet" type="text/css" />
+<link href="__THEME__/css/linefonts.css?v={:date('YmdHi')}" rel="stylesheet" type="text/css" />
+<link href="__THEME__/css/pop.css?v={:date('YmdHi')}" rel="stylesheet" type="text/css" />
+<script>
+/**
+ * 全局变量
+ */
+var SITE_URL  = '<php> echo SITE_URL;</php>';
+var THEME_URL = '__THEME__';
+var APPNAME   = '<php> echo APP_NAME;</php>';
+var MID		  = '<php> echo $login;</php>';
+// Js语言变量
+var LANG = new Array();
+var VERSION   = '<php> echo $site['site_version'];</php>';
+var COOKIE_PREFIX = '<php> echo C("COOKIE_PREFIX");</php>';
+var URL_MOD 	  = '<php> echo intval(C("URL_ROUTER_ON"));</php>';
+var $config = {};
+$config['url_mod'] = 1;
+$config['host_url'] = SITE_URL;
+</script>
+<!--[if lt IE 10]>
+<script type="text/javascript" src="__THEME__/image/iecss/PIE.js"></script>
+<![endif]-->
+</head>
+<body>
+<script type='text/javascript' src='__THEME__/js/jquery-1.11.1.min.js?v={:date('YmdH')}'></script>
+<script type='text/javascript' src='__THEME__/js/module.js?v={:date('YmdH')}'></script>
+<script type='text/javascript' src='__THEME__/js/jquery.ui.1.10.4.js?v={:date('YmdH')}'></script>
+<script type='text/javascript' src='__THEME__/js/module.form.js?v={:date('YmdH')}'></script>
+<script type='text/javascript' src='__THEME__/js/placeholder.js?v={:date('YmdH')}'></script>
+<script type='text/javascript' src='__THEME__/js/ui.js?v={:date('YmdH')}'></script>
+<script type='text/javascript' src='__THEME__/js/global.js?v={:date('YmdH')}'></script>
+<script type='text/javascript' src='__THEME__/js/module.common.js?v={:date('YmdH')}'></script>
+<script type='text/javascript' src='__THEME__/js/jquery.form.js?v={:date('YmdH')}'></script>

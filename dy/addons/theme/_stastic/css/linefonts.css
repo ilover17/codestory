@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'icomoon';
+    src:url('http://www.phpcto.net/dy/font/lineicon.eot');
+    src:url('http://www.phpcto.net/dy/font/lineicon.eot?#iefix') format('embedded-opentype'),
+    url('http://www.phpcto.net/dy/font/lineicon.svg#lineicon') format('svg'),
+    url('http://www.phpcto.net/dy/font/lineicon.woff') format('woff'),
+    url('http://www.phpcto.net/dy/font/lineicon.ttf') format('truetype');
+    font-weight:400;
+    font-style:normal
+}
+[class*=" icon-"],[class^=icon-] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size:18px;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-close:before {content: "\e600";}
+.icon-minus:before {content: "\e601";}
+.icon-plus:before {content: "\e602";}
+.icon-pie:before {content: "\e603";}
+.icon-download:before {content: "\e604";}
+.icon-vote:before {content: "\e605";}
+.icon-cal:before {content: "\e606";}
+.icon-grid:before {content: "\e607";}
+.icon-pen:before {content: "\e608";}
+.icon-clock:before {content: "\e609";}
+.icon-exit:before {content: "\e60a";}
+.icon-apps:before {content: "\e60b";}
+.icon-setup:before {content: "\e60c";}
+.icon-home3:before {content: "\e60d";}
+.icon-home2:before {content: "\e60e";}
+.icon-book:before {content: "\e60f";}
+.icon-user4:before {content: "\e610";}
+.icon-user:before {content: "\e611";}
+.icon-user3:before {content: "\e612";}
+.icon-user2:before {content: "\e613";}
+.icon-home:before {content: "\e614";}
+/*ie7*/
+.icon-close{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe600;');}
+.icon-minus{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe601;');}
+.icon-plus{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe602;');}
+.icon-pie{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe603;');}
+.icon-download{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe604;');}
+.icon-vote{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe605;');}
+.icon-cal{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe606;');}
+.icon-grid{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe607;');}
+.icon-pen{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe608;');}
+.icon-clock{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe609;');}
+.icon-exit{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe60a;');}
+.icon-apps{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe60b;');}
+.icon-setup{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe60c;');}
+.icon-home3{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe60d;');}
+.icon-home2{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe60e;');}
+.icon-book{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe60f;');}
+.icon-user4{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe610;');}
+.icon-user{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe611;');}
+.icon-user3{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe612;');}
+.icon-user2{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe613;');}
+.icon-home{*zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe614;');}

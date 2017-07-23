@@ -1,0 +1,162 @@
+<include file="../header" />
+    <div class="grid-classes">
+        <div class="pbl-title"><h4>放款记录</h4></div>
+        <div class="pbl-bg">
+                           
+            <div class="mod-search js-mod-search"  >
+                <form id='search' action="{:U('index/Index/index')}" method='get'> 
+                    <input type="hidden" name='app' value='index'>
+                    <input type="hidden" name='mod' value='Index'>
+                    <input type="hidden" name='act' value='index'>
+                    <div class="item-top">
+                        <span style="left:74px;"><i></i><em></em></span>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">客户编号：</div>
+                            <div class="item-content"><input type="text" class="s-txt" name='uname'  value='{$_GET.uname|t}' style="width:220px;"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">放款金额：</div>
+                            <div class="item-content"><input type="text" class="s-txt" name='money'  value='{$_GET.money|t}' style="width:220px;"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">放款日期：</div>
+                            <div class="item-content item-date">
+                            {:wDate(array('name'=>'cday','placeholder'=>'','id'=>'cday','value'=>t($_GET['cday'])))}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">业务员：</div>
+                            <div class="item-content"><input type="text" class="s-txt" name='username'  value='{$_GET.username|t}' style="width:220px;"></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">业务员费：</div>
+                            <div class="item-content"><input type="text" class="s-txt" name='userfee'  value='{$_GET.userfee|t}' style="width:220px;"></div>
+                        </div>
+                    </div>
+                     <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">平台费：</div>
+                            <div class="item-content"><input type="text" class="s-txt" name='platfee'  value='{$_GET.platfee|t}' style="width:220px;"></div>
+                        </div>
+                    </div>
+                     <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">状态：</div>
+                            <div class="item-content">
+                            <select name='status' style="vertical-align:middle">
+                            <option value='all' >全部 </option>
+                            <option value='0' <eq name='_GET.status' value='0'>selected="selected"</eq>>正常 </option>
+                            <option value='1' <eq name='_GET.status' value='1'>selected="selected"</eq>>坏账 </option>
+                            </select></div>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">&nbsp;</div>
+                            <div class="item-content">
+                                <a href="javascript:;" class="btn-blue mr15" onclick=
+                                "submitCheck($('#search'))"><span>确定</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+         
+            <table class="pbl-table">
+                <tbody>
+                    <tr>
+                        <th >序号</th>
+                        <th >客户编号</th>
+                        <th >放款日期</th>
+                        <th >放款金额</th>
+                        <th >还款期数</th>
+                        <th >每期还款</th>
+                        <th >平台费</th>
+                        <th >业务员费</th>
+                        <th >实际放款</th>
+                        <th >当前收回</th>
+                        <th >计划收回</th>
+                        <th >业务员</th>
+                        <th >状态</th>
+                        <th >操作</th>
+                    </tr>
+                    <neq name='lists.data' value=''>
+                    <volist name="lists.data" id="vo">
+                    <tr <eq name='vo.status' value='1'> style="background-color:red;color:#fff"</eq>>
+                       <td>{$vo.id}</td>
+                       <td>{$vo.uname}</td>
+                       <td>{$vo.cday}</td>
+                       <td>{$vo.money}</td>
+                       <td>{$vo.backtimes}</td>
+                       <td>{$vo.backfee}</td>
+                       <td>{$vo.platfee}</td>
+                       <td>{$vo.userfee}</td>
+                       <td>{$vo.realyfee}</td>
+                       <td>{$vo.curbackfee}</td>
+                       <td>{$vo.totalbackfee}</td>
+                       <td>{$vo.username}</td>
+                       <td><eq name='vo.status' value='1'> 坏账<else />正常 </eq></td>
+                       <td>
+                       <a href="{:U('index/Index/back',array('fee_id'=>$vo['id']))}">回款记录</a>
+                       <eq name='vo.status' value='0'>
+                       <a href="javascript:;" onclick="setBad({$vo.id})">设为坏账</a>
+                       </eq>
+                       <a href="javascript:;" onclick="setDel({$vo.id})">删除</a>
+                       </td>
+                    </td>
+                    </tr>
+                    </volist>
+                    <tr>
+                        <td colspan="3" align="right">所有汇总：</td>
+                        <td>{$total.money}</td>
+                        <td></td>
+                        <td></td>
+                        <td>{$total.platfee}</td>
+                        <td>{$total.userfee}</td>
+                        <td>{$total.realyfee}</td>
+                        <td>{$total.curbackfee}</td>
+                        <td>{$total.totalbackfee}</td>
+                        <td colspan="3"></td>
+                    </tr>
+                    <else />
+                    <tr><td colspan="9" align="center">暂无相关数据</td></tr>
+                    </neq>
+                </tbody>
+            </table>
+            <div class="page" style="padding-top: 10px ">
+            {$lists.html}
+            </div>
+        </div>
+    </div>
+<include file="../footer" />
+<script type="text/javascript">
+var setBad = function(fee_id){
+    ui.box.load(U('index/Index/badBox')+'&id='+fee_id,'坏账设置');
+}
+
+var setDel = function(fee_id){
+    ui.confirmBox('删除','确定删除此次放款记录？删除后所有回款记录都将作废.',function(){
+        $.post(U('index/Index/doDel'),{ id:fee_id },function(msg){
+            if(msg.status == 1){
+                ui.success('删除成功');
+                setTimeout(function(){
+                    location.href = location.href ; 
+                },1500)
+            }else{
+                ui.error('删除出错');
+            }
+        },'json')
+    });
+}
+</script>

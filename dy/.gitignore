@@ -1,0 +1,10 @@
+#finder#
+/logs/
+/data/
+/_runtime
+/.idea
+
+#file#
+/config/config.inc.php
+/.tags
+/.tags_sorted_by_file

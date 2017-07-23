@@ -1,0 +1,75 @@
+<div class="pop-custom clearfix" >
+	<div class="item-inner">
+		
+		<div class="item">
+			<div class="item-title">客户编号：</div>
+			<div class="item-content">
+				{$feeinfo.uname}
+			</div>
+		</div>
+		<div class="item">
+			<div class="item-title">回款期次：</div>
+			<div class="item-content">
+				{$info.back_nums}
+			</div>
+		</div>
+		<div class="item">
+			<div class="item-title">应回金额：</div>
+			<div class="item-content">
+				{$info.back_fee}
+			</div>
+		</div>
+		<div class="item">
+			<div class="item-title">应回日期：</div>
+			<div class="item-content">
+				{$info.back_day}
+			</div>
+		</div>
+		<div class="item">
+			<div class="item-title">实回金额：</div>
+			<div class="item-content">
+				<input id='realy_back_fee' value='{$info.back_fee}' class='s-txt' style='width:250px;'> 
+			</div>
+		</div>
+		<div class="item">
+			<div class="item-title">实回日期：</div>
+			<div class="item-content">
+				{:wDate(array('name'=>'realy_back_day','placeholder'=>'','id'=>'realy_back_day','value'=>date('Y-m-d')))}
+			</div>
+		</div>
+		<div class="item">
+			<div class="item-title">备注说明：</div>
+			<div class="item-content">
+				<input id='notes' value='' class='s-txt' style='width:250px;'> 
+			</div>
+		</div>
+		
+		<div class="item item-button">
+			<div class="item-title">&nbsp;</div>
+			<div class="item-content">
+				<a href="javascript:;" class="btn-blue" onclick="doSetBad({$info.id})"><span>确定</span></a>
+				<a href="javascript:;" class="btn-gray" onclick="ui.box.close()"><span>取消</span></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var doSetBad = function(id){
+		var params = {} 
+		params.id = id;
+		params.realy_back_day = $('#realy_back_day').val();
+		params.notes = $('#notes').val();
+		params.realy_back_fee = $('#realy_back_fee').val();
+		$.post(U('index/Index/doBack'),params,function(msg){
+			if(msg.status == 1){
+				ui.success('设置成功');
+				setTimeout(function(){
+					location.href = location.href;
+				},1500)
+			}else{
+				ui.error(msg.info);
+			}
+		},'json')
+	}
+</script>

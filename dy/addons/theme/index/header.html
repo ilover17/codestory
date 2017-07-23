@@ -1,0 +1,38 @@
+<include file="__THEME__/_header" />
+<div class="qm-left">
+<div class="qm-avatar">
+	
+</div>
+<div class="tree-menu">
+	<fieldset><legend>功能列表</legend></fieldset>
+	<ul class="second-menu" model-node="js_treemenu">
+		<li>
+			<a href="{:U('index/Index/add')}"><span class="figure"><i class="icon-home2"></i></span><span class="text">新加放款</span></a>
+		</li>
+		<li>
+			<a href="{:U('index/Index/index')}"><span class="figure"><i class="icon-home2"></i></span><span class="text">放款记录</span></a>
+		</li>
+		<li>
+			<a href="{:U('index/Index/todayback')}"><span class="figure"><i class="icon-home2"></i></span><span class="text">今日应回记录</span></a>
+		</li>
+		<li>
+			<a href="{:U('index/Index/back')}"><span class="figure"><i class="icon-home2"></i></span><span class="text">全部回款记录</span></a>
+		</li>
+		<eq name='user.is_admin' value='1'>
+		<li>
+			<a href="{:U('index/Index/chengben')}"><span class="figure"><i class="icon-home2"></i></span><span class="text">成本计算</span></a>
+		</li>
+		<li>
+			<a href="{:U('index/Index/user')}"><span class="figure"><i class="icon-home2"></i></span><span class="text">账号管理</span></a>
+		</li>
+		</eq>
+	</ul>
+	<ul class="second-menu exit">
+		<li>
+			<a href="{:U('index/Index/logout')}" class="left">
+				<span class="figure"><i class="ico-home6"></i></span><span class="text">退出</span></a>
+		</li>
+	</ul>
+</div>
+</div>
+<div class="qm-right" >

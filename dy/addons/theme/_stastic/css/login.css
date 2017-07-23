@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {color: #555;}
+body{font-size:12px}
+body, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, b, s, u, i, strong, ico-close, em, tt, var, img, q, dl, dt, dd, ol, ul, li, blockquote, pre, fieldset, abbr, address, code, form, input, textarea, label, legend, table, tbody, tfoot, thead, tr, th, td {border: 0 none;margin: 0;padding: 0;font-family:arial;}
+form{margin:0;padding:0}
+a:link{text-decoration:none}
+a:visited{text-decoration:none}
+a:hover{text-decoration:none}
+a:active{text-decoration:none}
+li{list-style-type:none}
+/*form*/
+
+.ok{background:url(image/ico.png?version=20150707) no-repeat 0 0;width:24px;height:24px;display:inline-block;vertical-align:middle}
+.ok{background-position:-2px -2px;margin:0 10px 0 0}
+.right{float:right}
+
+/*KMC Login*/
+.login{position:relative;width:1000px;}
+.login-hd{font-size:16px;color:#666;margin-bottom:20px;}
+
+.login-grid{position:fixed;width:100%;height:100%;left:0;top:0;}
+.login-outer{width:520px;height:364px;position:absolute;left:50%;top:50%;margin:-182px 0 0 -260px;background:#fff;border-radius:5px;}
+.login-main{height:480px;}
+.login-header .item{width:1000px;margin:0 auto;padding:20px 0}
+.login-box{position:absolute;top:100px;right:0;padding:25px 35px;width:290px;background:#fff;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;box-shadow:0 1px 1px #ccc}
+
+.login-btn{margin:0 0 20px;}
+.login-btn a{color:#fff;font-size:16px;line-height:40px;display:block;text-align:center;padding:0 20px;background:#0089f5;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;border:#027cdd solid 1px}
+.login-btn a:hover{background:#027cdd;border-color:#027cdd}
+
+.login-input li{position:relative;background:#fafafa;border:#ddd solid 1px;border-radius:3px;padding:5px 9px 5px 36px;margin:0 0 15px;}
+.login-input input{border:none 0;height:30px;line-height:30px;font-size:14px;background:#fafafa;width:100%;}
+.login-input input:focus{outline:none 0}
+.login-input .border{border-top:#d3d3d3 solid 1px;}
+.login-input .vcode{border:none 0;background:none;padding:0}
+.login-input .vcode input{border:#ddd solid 1px;height:30px;line-height:30px;font-size:14px;padding:5px 9px;width:100px;border-radius:3px;vertical-align:middle;margin:0 5px 0 0}
+.login-input .vcode a{color:#666;line-height:39px}
+.login-input .icon{position:absolute;top:7px;left:10px;vertical-align:middle;margin:6px 0 0}
+.login-footer{width:1000px;margin:0 auto;padding:30px 0;text-align:center;font-size:14px;color:#999;}
+
+.login-reg{font-size:14px;line-height:20px;text-align:center;}
+.login-reg a{text-align:center;color:#027cdd}
+
+.login-button{padding:20px 100px;border-top:#eee solid 1px;height:46px;}
+.login-button a{float:left;display:inline-block;height:44px;line-height:44px;font-size:18px;text-align:center;border:#fff solid 1px;border-radius:3px;-webkit-transition:all 0.4s ease 0s;-moz-transition:all 0.4s ease 0s;-o-transition:all 0.4s ease 0s;transition:all 0.4s ease 0s;}
+.login-button .button-reg{min-width:128px;border-color:#3091f2;color:#3091f2}
+.login-button .button-reg:hover{background:#3091f2;color:#fff}
+.login-button .button-forget{min-width:168px;border-color:#bbb;color:#bbb;margin:0 0 0 20px}
+.login-button .button-forget:hover{background:#bbb;color:#fff}
+#js_login_input{top:171px;z-index:9}
+#js_login_input .btn-error{display:block;background:#fff;width:283px;height: auto;white-space:normal; padding: 2px;}
+
+/*Icon*/
+.icon-user,.icon-lock{background:url(../image/login_icon.png) no-repeat 0 0;display:inline-block;width:16px;height:16px}
+.icon-user{background-position:0 1px}
+.icon-lock{background-position:-34px 0}

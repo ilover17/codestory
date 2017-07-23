@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<group name="admin" info="后台管理">
+<action type="cleanlog" info="清理日志"><![CDATA[ 
+清理 {$date} 月前的日志。
+]]></action>
+<action type="logsArchive" info="日志归档"><![CDATA[
+归档日志,操作结果：{$msg} ;
+]]></action>
+<action type="cleancache" info="缓存清理"><![CDATA[ 
+执行了缓存清理操作
+]]></action>
+<action type="user_add" info="添加用户"><![CDATA[ 
+添加了{$is_admin} 用户: 【{$name}】 
+]]></action>
+<action type="user_del" info="删除用户"><![CDATA[ 
+删除了用户: 【{$name}】 
+]]></action>
+<action type="field_add" info="添加字段"><![CDATA[ 
+添加了报名字段 【{$field_name}】
+]]></action>
+<action type="field_edit" info="编辑字段"><![CDATA[ 
+编辑了报名字段 【{$field_name}】 
+]]></action>
+<action type="field_del" info="删除字段"><![CDATA[ 
+删除了报名字段 【{$field_name}】 
+]]></action>
+<action type="file_add" info="添加资料分类"><![CDATA[ 
+添加了资料分类 【{$name}】 
+]]></action>
+<action type="file_edit" info="编辑资料分类"><![CDATA[ 
+编辑了资料分类 【{$name}】 
+]]></action>
+<action type="file_del" info="删除资料分类"><![CDATA[ 
+删除了资料分类 【{$name}】 
+]]></action>
+<action type="survey_typeadd" info="添加需求调查分类"><![CDATA[ 
+添加了需求调查分类 【{$name}】 
+]]></action>
+<action type="survey_typeedit" info="编辑需求调查分类"><![CDATA[ 
+编辑了需求调查分类 【{$name}】 
+]]></action>
+<action type="survey_typedel" info="删除需求调查分类"><![CDATA[ 
+删除了需求调查分类 【{$name}】 
+]]></action>
+<action type="util_add" info="添加单位"><![CDATA[ 
+添加了单位 【{$name}】 
+]]></action>
+<action type="util_edit" info="编辑单位"><![CDATA[ 
+编辑了单位 【{$name}】 
+]]></action>
+<action type="util_del" info="删除单位"><![CDATA[ 
+删除了单位 【{$name}】 
+]]></action>
+</group>
+
+<group name='edu' info='教务管理系统'>
+<action type="outindex" info="导出项目一览表"><![CDATA[ 
+导出了 【{$outtime}】 的项目一览表数据
+]]></action>
+<action type="student_add" info="录入学员"><![CDATA[ 
+录入了班级 【{$class_name}】 下的学员: 【{$name}】 
+]]></action>
+<action type="student_del" info="删除学员"><![CDATA[ 
+删除了学员: 【{$name}】 
+]]></action>
+<action type="student_leave" info="移出学员"><![CDATA[ 
+将学员: 【{$name}】 移出了班级 【{$class_name}】 
+]]></action>
+<action type="ticket_del" info="删除发票"><![CDATA[ 
+删除了发票: 【{$title}】 
+]]></action>
+<action type="ticket_add" info="添加发票"><![CDATA[
+新加了发票信息: 【{$title}】 
+]]></action>
+<action type="ticket_edit" info="编辑发票"><![CDATA[ 
+编辑了发票信息: 【{$title}】 
+]]></action>
+<action type="ticket_update" info="覆盖发票"><![CDATA[ 
+覆盖了发票信息: 【{$title}】 
+]]></action>
+<action type="dopayed" info="设为已付款"><![CDATA[ 
+设置学员{$student_name}({$student_log}) 在班级“{$class_name}”的报名支付信息为已支付
+]]></action>
+<action type="teacher_add" info="录入教师"><![CDATA[ 
+录入了课程 【{$lesson_name}】 下的教师: 【{$name}】 
+]]></action>
+<action type="teacher_edit" info="录入教师"><![CDATA[ 
+修改了课程 【{$lesson_name}】 下的教师: 【{$name}】 的相关信息
+]]></action>
+<action type="teacher_del" info="删除师资"><![CDATA[ 
+删除了教师 【{$name}】 的课程 【{$lesson_name}】 
+]]></action>
+<action type="project_add" info="添加培训项目"><![CDATA[ 
+添加了培训项目 【{$name}】 
+]]></action>
+<action type="project_edit" info="编辑培训项目"><![CDATA[ 
+编辑了培训项目 【{$name}】 相关信息
+]]></action>
+<action type="project_del" info="删除培训项目"><![CDATA[ 
+删除了培训项目 【{$name}】 
+]]></action>
+<action type="class_add" info="添加班级"><![CDATA[ 
+添加了班级 【{$class_name}】 
+]]></action>
+<action type="class_edit" info="编辑班级"><![CDATA[ 
+编辑了班级 【{$class_name}】 信息
+]]></action>
+<action type="class_del" info="删除班级"><![CDATA[ 
+删除了班级 【{$class_name}】 
+]]></action>
+<action type="class_out" info="导出班级"><![CDATA[ 
+导出了班级 【{$class_name}】 相关数据
+]]></action>
+<action type="class_rsync" info="同步数据"><![CDATA[ 
+同步 【{$class_name}】 下的学员数据到集团党建信息表 
+]]></action>
+<action type="lesson_add" info="新加排课"><![CDATA[ 
+新加 【{$class_name}】 下的排课信息：课程 【{$lesson_name}】 ,教师 【{$teacher_name}】 ,地点: 【{$place_name}】 ,时间： 【{$stime}】  -  【{$etime}】 
+]]></action>
+<action type="lesson_edit" info="编辑排课"><![CDATA[ 
+编辑了 【{$class_name}】 下的排课信息：课程 【{$lesson_name}】 ,教师 【{$teacher_name}】 ,地点: 【{$place_name}】 ,时间： 【{$stime}】  -  【{$etime}】 
+]]></action>
+<action type="lesson_del" info="删除排课"><![CDATA[ 
+删除了 【{$class_name}】 下的排课信息：课程 【{$lesson_name}】 ,教师 【{$teacher_name}】 ,地点: 【{$place_name}】 ,时间： 【{$stime}】  -  【{$etime}】 
+]]></action>
+<action type="resource_add" info="录入资源"><![CDATA[ 
+录入了资源 【{$name}】 
+]]></action>
+<action type="resource_edit" info="编辑资源"><![CDATA[ 
+编辑了资源 【{$name}】 
+]]></action>
+<action type="resource_del" info="删除资源"><![CDATA[ 
+删除了资源 【{$name}】 
+]]></action>
+<action type="resource_ding" info="预定会议室"><![CDATA[ 
+预定了会议室 【{$name}】 ,时间: 【{$stime}】  -  【{$etime}】 
+]]></action>
+<action type="resource_cancel" info="取消预定"><![CDATA[ 
+取消了会议室 【{$name}】 的预定,时间: 【{$stime}】  -  【{$etime}】 
+]]></action>
+</group>
+
+<group name="index" info="学员平台">
+<action type="login" info="登录系统"><![CDATA[ 
+登录了系统
+]]></action>
+<action type="sign" info="学员报到"><![CDATA[ 
+{$dologin} 在班级 【{$class_name}】 下报到学员： 【{$login}】 。
+]]></action>
+<action type="survey_lesson_add" info="课程评估"><![CDATA[
+填写了课程 【{$lesson_name}】 的课程评估
+]]></action>
+<action type="survey_add" info="需求调查"><![CDATA[
+填写了需求调查 【{$name}】 
+]]></action>
+<action type="file_add" info="资料上传"><![CDATA[
+上传了资料 【{$name}】 
+]]></action>
+<action type="file_download" info="资料下载"><![CDATA[
+下载了资料 【{$name}】 
+]]></action>
+</group>
+</root>	

@@ -1,0 +1,10 @@
+<div id='stringText_{$inputname}' model-node='string_text' model-args='value={$value}&inputname={$inputname}' class="tags-user clearfix">
+    <div class="tag-lists">
+        <ul class="taglist"></ul>
+    </div>
+    <div class="left">
+    <input event-node="stringInput" type="text"  value="" class="s-txt s-width" style="width:{$width}px" placeholder='{$tips}'/>
+    <a  class="btn left" event-node='stringAdd' href="javascript:;" style="display:none"><span>添加</span></a>
+    <input type="hidden" name='{$inputname}' event-node ='hiddenInput' value='{$value}'>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<include file="_header" />
+<script>
+function Jump(){
+  window.location.href = '{$jumpUrl}';
+}
+document.onload = setTimeout("Jump()" , {$waitSecond}* 1000);
+</script>
+<base target="_self" />
+<eq name="status" value="1">
+  <div class="Prompt">
+  	<div class="Prompt-inner">
+      <p><i class="ico-ok"></i>{$message}</p>
+  </div>
+  </div>
+</eq>
+<eq name="status" value="0">
+  <div class="Prompt">
+  	<div class="Prompt-inner">
+       <div class="box-ver"><i class="ico-error"></i>{$message}</div>
+    </div>
+    </div>
+</eq>
+</body>
+</html>

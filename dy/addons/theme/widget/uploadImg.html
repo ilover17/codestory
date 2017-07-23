@@ -1,0 +1,13 @@
+<php> empty($default_id) && $default_id = 0;</php>
+<neq name='tips' value=''><div style="padding-top:5px" class="pic_list_count">{$tips}</div></neq>
+<ul class="pic_list">
+	<li class="add js_upload"  style="width:{$width}px;height:{$height}px;<neq name='default_id' value='0'>display:none </neq>">
+	<a href="javascript:;" style="height:{$height}px;line-height:{$height}px">上传照片</a><input type="file" onchange="core.plugInit('uploadImage',this,{$callback});" urlquery="{$urlquery}" event-node="add_image" inputname="attach" name="attach">
+	<div style="display:none;font-size:12px" class='loading'>loading...</div>
+	</li>
+	<li class="js_show_img" style="width:{$width}px;height:{$height}px;<eq name='default_id' value='0'>display:none</eq>"  >
+		<img src="{:U('edu/Public/showImage',array('attach_id'=>$default_id,'type'=> $type));}" >
+		<input type="hidden" name='{$inputname}' value='{$default_id}'>
+		<a href="javascript:;" onclick="core.uploadRemove(this)" class="icon-close"></a>
+	</li>
+</ul>

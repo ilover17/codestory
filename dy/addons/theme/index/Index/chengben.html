@@ -1,0 +1,104 @@
+<include file="../header" />
+    <div class="grid-classes">
+        <div class="pbl-title"><h4>成本计算</h4></div>
+        <div class="pbl-bg">
+                           
+            <div class="mod-search js-mod-search"  >
+                <form id='search' action="{:U('index/Index/chengben')}" method='get'> 
+                    <input type="hidden" name='app' value='index'>
+                    <input type="hidden" name='mod' value='Index'>
+                    <input type="hidden" name='act' value='chengben'>
+                    <div class="item-top">
+                        <span style="left:74px;"><i></i><em></em></span>
+                    </div>
+                   
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">开始日期：</div>
+                            <div class="item-content item-date">
+                            {:wDate(array('name'=>'cday','placeholder'=>'','id'=>'cday','value'=>t($_GET['cday'])))}
+                            </div>
+                        </div>
+                    </div>
+                     <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">结束日期：</div>
+                            <div class="item-content item-date">
+                            {:wDate(array('name'=>'eday','placeholder'=>'','id'=>'eday','value'=>t($_GET['eday'])))}
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <div style="clear:both"></div>
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-title">&nbsp;</div>
+                            <div class="item-content">
+                                <a href="javascript:;" class="btn-blue mr15" onclick=
+                                "submitCheck($('#search'))"><span>确定</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+            <table class="pbl-table">
+                <tbody>
+                    <tr>
+                        <th >日期</th>
+                        <th >贷款总额</th>
+                        <th >平台收取费用</th>
+                        <th >业务员费用</th>
+                        <th >实际发放</th>
+                        <th >计划回收总额</th>
+                        <th >预期利润</th>
+                        <th >当前已回收</th>
+                    </tr>
+                    <neq name='lists' value=''>
+                    <volist name="lists" id="vo">
+                    <tr>
+                       <td>{$vo.cday}</td>
+                       <td>{$vo.money}</td>
+                       <td style='color:#ccc'>{$vo.platfee}</td>
+                       <td style='color:#ccc'>{$vo.userfee}</td>
+                       <td ><b>{$vo.realyfee}<b></td>
+                       <td ><b>{$vo.totalbackfee}</b></td>
+                       <td><b><php>echo $vo['totalbackfee'] - $vo['realyfee']</php></b></td>
+                       <td style='color:#ccc'>{$vo.curbackfee}</td>
+                    </td>
+                    </tr>
+                    </volist>
+                    <tr>
+                        <td >所有汇总：</td>
+                        <td>{$total.money}</td>
+                        <td style='color:#ccc'>{$total.platfee}</td>
+                        <td style='color:#ccc'>{$total.userfee}</td>
+                        <td>{$total.realyfee}</td>
+                        <td>{$total.totalbackfee}</td>
+                        <td><b><php>echo $total['totalbackfee'] - $total['realyfee']</php></b></td>
+                        <td style='color:#ccc'>{$total.curbackfee}</td>
+                    </tr>
+                    <else />
+                    <tr><td colspan="9" align="center">暂无相关数据</td></tr>
+                    </neq>
+                </tbody>
+            </table>
+            <div  style="padding-top: 10px;font-size:14px">
+<pre>可以按周或者按月计算搜索计算成本，下面是各个列说明：
+         1.贷款总额：表示当日客户来贷款的总金额；
+         2.实际发放总额：表示当日发放出去的实际金额，等于“贷款总额-首期还款额-平台费用+业务员费用”;
+         3.计划回收总额：当日之后之后剩余期数理论还款金额，不包括坏账等情况；
+         4.预期利润 = 预期可收回总金额 - 实际发放总金额 （此利润为不包含坏账的情况）
+         5.实际总利润 = 预期可收回总金额 - 实际发放总金额 - 坏账无法收回的金额（这部分需要手动处理），<font color="Red">所以实际总利润最好线下算，不在此表中体现</font>；
+         6.当前已回收总金额：到目前为止收回的总金额，包括第一期自动回收的金额（仅做展示）；
+         7.平台收取费用，业务员费用在此仅做展示使用；
+</pre>
+            </div>
+        </div>
+    </div>
+<include file="../footer" />
+<script type="text/javascript">
+var setBad = function(fee_id){
+    ui.box.load(U('index/Index/badBox')+'&id='+fee_id,'坏账设置');
+    
+}
+</script>

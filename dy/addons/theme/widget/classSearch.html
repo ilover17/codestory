@@ -1,0 +1,18 @@
+<div class="choose-user" model-node='search_widget'
+model-args='max={$max}&model_name={$model_name}&app_name={$app_name}&search_method={$search_method}&default_ids={$default_ids}&inputname={$inputname}&list_width={$list_width}&search_tips={$search_tips}&mulit={$mulit|default=0}&blurCallback={$blurCallback}&callbackHtml={$callbackHtml}&autostart={$autostart}&search_ids={$search_ids}&id={$id}&selectFirst={$selectFirst}&insertCallback={$insertCallback}&strlength={$length}'>
+    <ul model-node="search_list" class="user-list"  <eq name='search_list' value=''>style='display:none'</eq>>
+        <volist name='search_list' id='vo'>
+        <li>
+        <div class="content">
+            <a href="{$vo.url}" title="{$vo.name}">{$vo.name|getShort=###,$length,'...'}</a>
+        </div>
+        <eq name='editable' value="1"><a search_id='{$vo.id}' href="javascript:;" class="ico-remove" ></a></eq>
+        </li>
+        </volist>
+    </ul>
+    <input type="hidden" id="search_ids_{$id}" name="{$inputname}" value="{$default_ids}" >
+    <eq name='editable' value="1">
+    <input event-node="search_link" placeholder="{$placeholder}" type="text" class="s-txt" autocomplete="off" style="width:{$width}px;<php>if(count($search_list) == $max && $max>0){</php>;display:none<php>}</php>" id='search_{$inputname}' name="search_{$inputname}">
+    </eq>
+</div>
+<a class="btn-gray"  event-node='select_class' event-args='id={$id}&boxtype={$boxtype}'><span>选择</span></a>

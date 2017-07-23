@@ -1,0 +1,69 @@
+<include file="__THEME__/_header" />
+<link href="__THEME__/css/login.css?v={$site.site_version}" rel="stylesheet" type="text/css" />
+<style>
+    html,body{background-color: #fff}
+</style>
+    
+    </div>
+    <div class="login-main">
+        <div class="login">
+            <div class="login-box">
+           
+                 <form id="ajax_login_form" method="POST" action="{:U('index/Index/doLogin')}">
+                        
+                        <div class="login-hd">用户登录</div>
+                        <ul class="login-input">
+                            <li>
+                                <i class="icon icon-user"></i>
+                                <input name="login" type="text" placeholder="输入登录名" autocomplete='off'/>
+                            </li>
+                            <li >
+                                <i class="icon icon-lock"></i>
+                                <input name="pass" type="password" placeholder="输入登录密码" autocomplete='off'/>
+                                <input type="text" style='display:none'>
+                            </li>
+                        </ul>
+                        <div class="login-btn">
+                            <input type="submit" class="btn-enter-zh-cn" value="" style="display:none">
+                            <a href="javascript:;" onclick="$('#ajax_login_form').submit()">登录</a>
+                        </div>
+                        <div id="js_login_input" style="display:none"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+ 
+<script src="__THEME__/js/jquery.form.js?v={$site.site_version}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#ajax_login_form').submit(function(){
+            //表单验证.
+            //表单提交
+            $(this).ajaxSubmit({
+                beforeSubmit:  checkLoginForm,
+                success:       loginCallback
+            });
+            return false;
+        });
+
+        function checkLoginForm(){
+            return true;
+        }
+
+        function loginCallback(e){
+            var i = eval("("+e+")");
+            if(i.status==1){
+                window.location.href = SITE_URL;
+            }else{
+                $('#js_login_input').html('<div class="btn-error"><span><b class="ico-error" onclick=\'$("#js_login_input").hide()\'></b>'+i.info+'</span></div>').show();
+            }
+        }
+        core.plugFunc('imgshow',function(){
+            core.imgshow.loginImg();
+        });
+
+    });
+</script>
