@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<title>Vue 基础学习</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<h1>知识点1：解析文本变量与原始HTML变量 </h1>
+<hr/> 
+<div id='app01'>
+    <span>Message: {{ msg }}</span>
+    <span v-once>只解析一次，不绑定数据变化: {{ msg }}</span>
+    <br/>这里是原始HTML的解析
+    <span v-html='rawHtml'></span>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app01',
+        data:{
+            msg:'这里是消息',
+            rawHtml:'<span style="color: red">This should be red.</span>'
+        }
+    });
+</script>
+<hr/>
+<h1>知识点2：v-bind 和 v-on的缩写</h1>
+<div id='app02'>
+    <div>
+    <a v-bind:href="url">...</a>
+    <a :href="url">...</a>
+    <!-- 动态参数的缩写 (2.6.0+) -->
+    <a :[key]="url"> ... </a>
+    </div>
+    <div>
+    <a v-on:click="doSomething">...</a>
+    <a @click="doSomething">...</a>
+    <!-- 动态参数的缩写 (2.6.0+) -->
+    <a @[event]="doSomething"> ... </a>
+    </div>
+</div>
+<script type="text/javascript">
+    
+    var vm = new Vue({
+        el:'#app02',
+        data:{
+            url:'http://www.baidu.com',
+            key:'href',
+            event:'click'
+        },
+        methods:{
+            doSomething:function(){
+                console.log('sss');
+            }
+        }
+    });
+</script>
+
+<hr/>
+<h1>知识点3：计算属性 </h1>
+<div id='app02'>
+    <div>
+    <a v-bind:href="url">...</a>
+    <a :href="url">...</a>
+    <!-- 动态参数的缩写 (2.6.0+) -->
+    <a :[key]="url"> ... </a>
+    </div>
+    <div>
+    <a v-on:click="doSomething">...</a>
+    <a @click="doSomething">...</a>
+    <!-- 动态参数的缩写 (2.6.0+) -->
+    <a @[event]="doSomething"> ... </a>
+    </div>
+</div>
+<script type="text/javascript">
+    
+    var vm = new Vue({
+        el:'#app02',
+        data:{
+            url:'http://www.baidu.com',
+            key:'href',
+            event:'click'
+        },
+        methods:{
+            doSomething:function(){
+                console.log('sss');
+            }
+        }
+    });
+</script>
+ 
+</body>
+</html>
